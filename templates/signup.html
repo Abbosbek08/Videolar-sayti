@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form method="POST">
+  <label >{% if message %}<p>{{message}}</p>{% endif %}</label>
+  <input type="text" name='username' value='Your username'><br>
+  <input type="text" name="full_name" value="Your full name"><br>
+  <input type="email" name="email" value="your_username@gmail.com"><br>
+  <input type="password" name="password" id="password" value='SfdASdaSDAFAaca'><br> <button type="button" onclick="show()">Show password</button> <button type="button" onclick="hide()">Hide password</button><br>
+  <input type="submit" value="Sign up">
+</form>
+<script>
+function show() {
+  el=document.getElementById('password')
+  el.setAttribute('type','text')
+}
+function hide(){
+  el=document.getElementById('password')
+  el.setAttribute('type','password')
+}
+</script>
+{% endblock body %}

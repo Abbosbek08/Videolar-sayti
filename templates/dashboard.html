@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% if current_user.is_authenticated %}
+<h1>
+Salom
+<i style="color:blue"> {{ current_user.full_name }}</i></h1>
+{% endif %}
+{% endblock body %}

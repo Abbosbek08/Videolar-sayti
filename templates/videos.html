@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+  video{
+    max-height: 30%;
+    width: 90%;
+  }
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<h1>Saytdagi videolar</h1>
+
+<p>
+  {% for video in videos %}
+  <div style="border: solid 3px gray;height:30%">
+    <h5><a href="/display/{{video.video}}">Videoga kirish</a></h5>
+  <video id="{{video.video}}" src="/display/{{video.video}}" controls></video><br>
+  {% if (current_user.is_authenticated) and (current_user.id==video.user_id) %}
+  <form action="/videos/{{video.video}}" method="POST"><input type="submit" value="O'chirish"></form>
+  {% endif %}
+</div>
+  {% endfor %}
+</p>
+
+<script>
+</script>
+
+{% endblock body %}

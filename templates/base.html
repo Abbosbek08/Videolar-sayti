@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Videolar sayti</title>
+  <style>
+    .flash-message{
+      height:50px;
+      background:lightblue;
+      justify-content:center;
+      font-size: 200%;
+    }
+  </style>
+  {% block head %}
+  {% endblock head %}
+</head>
+<body>
+  <center>
+  <nav>
+    <a href="/">Site</a>
+     | 
+    {% if current_user.is_authenticated %} <a href="/home">Dashboard</a>
+     | 
+    <a href="/logout">Log out</a>
+     | 
+    <a href="/videos/new">Upload Video</a>
+    {% else %}
+    <a href="/login">Log in</a>
+    | 
+    <a href="/signup">Sign up</a>
+    {% endif %}
+    | 
+    <a href="/videos">Videolar</a>
+
+</nav>
+  <hr>
+    <p>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+          <p class="flash-message">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </p>
+  {% block body %}
+  {% endblock body %}
+</center>
+</body>
+</html>
